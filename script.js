@@ -36,4 +36,4 @@ ably.connection.once("connected", async () => {
 
 });
 
-
+console.log("we got to this point");
