@@ -18,8 +18,8 @@ ably.connection.on('failed', (err) => {
 
 ably.connection.once("connected", async (stateChange) => {
   const channel = ably.channels.get("main-channel");
-  const myId = stateChange.current.id;
-  console.log("Your connectionId is:", myId);
+  const myId = ably.connection.id;
+  console.log("Connected with connectionId:", myId);
 
   // Read server
   channel.subscribe("move", (msg) => {
@@ -41,6 +41,7 @@ ably.connection.once("connected", async (stateChange) => {
   const startButton = document.getElementById('startButton');
 
   startButton.addEventListener('click', () => {
+    console.log("Your connectionId is:", myId);
     onUserAction({connectionId: myId, action: 'start'});
   });
 
