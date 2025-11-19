@@ -3,7 +3,6 @@
 
 const ably = new Ably.Realtime.Promise({
   key: "MQAXag.a3lYNg:UTSjobvrLkoJ2KoSb7nj5ciU4l5FYyB5DB1VGZiMz08",
-  clientId: "demo-user-" + Math.random()
 });
 
 ably.connection.once("connected", async () => {
