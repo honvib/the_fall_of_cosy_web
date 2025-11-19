@@ -13,12 +13,14 @@ ably.connection.on('failed', (err) => {
   console.error("Ably: FAILED", err);
 });
 
+
 // Ably connection
 
 ably.connection.once("connected", async () => {
   const channel = ably.channels.get("main-channel");
-  const myId = ably.connection.Id;
+  let myId = ably.connection.Id;
   console.log("Your connectionId is:", myId);
+  console.log("Your connectionId is:", ably.connection.Id);
 
   // Read server
   channel.subscribe("move", (msg) => {
@@ -34,12 +36,15 @@ ably.connection.once("connected", async () => {
 
   // Elements
 
-  const demoButton = document.getElementById('demoButton');
+  function startTimer(time){
+  }
+
+  const startButton = document.getElementById('startButton');
 
   demoButton.addEventListener('click', () => {
+    let myId = ably.connection.Id;
     onUserAction({ connectionId: myId, action: 'start' });
+    startTimer(1);
   });
 
 });
-
-console.log("we got to this point");
