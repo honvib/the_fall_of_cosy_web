@@ -19,18 +19,18 @@ ably.connection.on('failed', (err) => {
 ably.connection.once("connected", async () => {
   const channel = ably.channels.get("main-channel");
   const myId = ably.connection.id;
-  console.log("Connected with connectionId:", myId);
+  console.log("Connected as", role, "with connectionId:", myId);
 
   // Read server
   channel.subscribe("move", (msg) => {
-      console.log("Received from:", msg.connectionId, "action", msg.action);
+      console.log(msg.connectionId, "as", role, "sent action:", msg.action);
       console.log("Raw message:", msg);
   });
 
   // User action
-  function onUserAction(moveData) {
-      channel.publish("move", moveData);
-      console.log("button pressed, sent move:", moveData);
+  function onUserAction(msg) {
+      channel.publish("move", msg);
+      console.log(msg.connectionId, "as", role, "sent action:", msg.action);
   };
 
   // Elements
@@ -38,7 +38,7 @@ ably.connection.once("connected", async () => {
   const startButton = document.getElementById('startButton');
 
   startButton.addEventListener('click', () => {
-    onUserAction({connectionId: myId, action: "start"});
+    onUserAction({connectionId: myId, role: role, action: "start"});
   });
 
 });
