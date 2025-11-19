@@ -35,9 +35,6 @@ ably.connection.once("connected", async (stateChange) => {
 
   // Elements
 
-  function startTimer(time){
-  }
-
   const startButton = document.getElementById('startButton');
 
   startButton.addEventListener('click', () => {
