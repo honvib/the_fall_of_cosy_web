@@ -1,24 +1,28 @@
-// Ably connect
+
+// Ably setup
 
 const ably = new Ably.Realtime.Promise({
   key: "MQAXag.a3lYNg:UTSjobvrLkoJ2KoSb7nj5ciU4l5FYyB5DB1VGZiMz08",
-  clientId: "user" + Math.random()
+  clientId: "demo-user-" + Math.random()
 });
 
-  ably.connection.once('connected', async () => {
-    const channel = ably.channels.get('the-fall-of-cozy-web');
+ably.connection.once("connected", async () => {
+  const channel = ably.channels.get("the-fall-of-cozy-web");
 
-    // listen for updates from the other tablet
-    channel.subscribe('move', (msg) => {
-      const data = msg.data;
-      // update your UI based on data
-      console.log('Received move:', data);
-    });
-
-    // when the user does something:
-    function onUserAction(moveData) {
-      channel.publish('move', moveData);
-    }
-
-    // hook `onUserAction` into your UI
+  channel.subscribe("move", (msg) => {
+    console.log("Received move:", msg.data);
+    // update UI
   });
+
+  function onUserAction(moveData) {
+    channel.publish("move", moveData);
+  }
+});
+
+// Ably application
+
+const demoButton = document.getElementById('myButton');
+
+demoButton.addEventListener('click', () => {
+    onUserAction({ action: 'button-pressed' });
+});
