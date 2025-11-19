@@ -18,15 +18,22 @@ ably.connection.on('failed', (err) => {
 ably.connection.once("connected", async () => {
     const channel = ably.channels.get("main-channel");
 
+    console.log("Your connectionId is:", ably.connection.id);
+
+    // Read server
     channel.subscribe("move", (msg) => {
         console.log("Received move from", msg.data.connectionId, ":", msg.data);
         console.log("Raw message:", msg);
     });
 
+
+    // User action
     function onUserAction(moveData) {
         channel.publish("move", moveData);
         console.log("button pressed, sent move:", moveData);
     };
+
+    // Elements
 
     const demoButton = document.getElementById('demoButton');
 
