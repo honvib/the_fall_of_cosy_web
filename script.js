@@ -1,3 +1,19 @@
+// Content-scaling
+
+function scalePage() {
+  const baseWidth = 2160;
+  const baseHeight = 1640;
+
+  const scale = Math.min(
+    window.innerWidth / baseWidth,
+    window.innerHeight / baseHeight
+  );
+
+  document.querySelector('.design').style.transform = `scale(${scale})`;
+}
+
+window.addEventListener('resize', scalePage);
+scalePage();
 
 // Ably setup
 

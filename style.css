@@ -1,17 +1,27 @@
 /* General setup */
 
-html {
-  box-sizing: border-box;
-}
-
-*, *::before, *::after {
-  box-sizing: inherit; 
-}
-
-body {
-  font-family: Arial, sans-serif;
-  line-height: 1.5;
-  color: #333;
+html, body {
   margin: 0;
   padding: 0;
+  height: 100%;
+  overflow: hidden;
+  background-color: #333333;
+
+  font-family: Arial, sans-serif;
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+.main-wrapper {
+  width: 100vw;
+  height: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #111111;
+}
+
+.main-frame {
+  width: 2160px;
+  height: 1640px;
 }
