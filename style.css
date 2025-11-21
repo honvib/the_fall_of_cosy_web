@@ -1,27 +1,39 @@
-/* General setup */
+/* Global setup */
+
+* {
+    box-sizing: border-box;
+}
 
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  overflow: hidden;
   background-color: #333333;
+  height: 100%;
 
-  font-family: Arial, sans-serif;
+  font-family: system-ui, sans-serif;
   line-height: 1.5;
   color: #ffffff;
 }
 
-.main-wrapper {
-  width: 100vw;
-  height: 100vw;
+body {
+  
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #111111;
+  background-color: #333333;
 }
 
 .main-frame {
-  width: 2160px;
-  height: 1640px;
+  aspect-ratio: 54 / 41;
+  width: min(100vw, 100vh * 54 / 41);
+  max-height: 100vh;
+  background-color: #000000;
+  overflow: hidden;
+}
+
+/* Templates */
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }

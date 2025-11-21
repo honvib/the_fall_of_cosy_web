@@ -6,14 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title> The Fall of Cozy Web </title>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="css/lobby.css">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../lobby.css">
 </head>
 <body>
+<div class="main-frame receiver">
 <!-- CONTENT -->
 
 <p>
-    You are the sender
+    You are the receiver
 </p>
 
 <br>
@@ -22,12 +23,13 @@
 START
 </button>
 
+</div>
 <!-- SCRIPTS -->
 <script>
-    const role = "sender";
+    const role = "receiver";
 </script>
 
 <script src="https://cdn.ably.io/lib/ably.min-1.js"></script>
-<script src="script.js"></script> 
+<script src="../ably.js"></script> 
 </body>
 </html>
